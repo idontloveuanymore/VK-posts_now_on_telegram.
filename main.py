@@ -1,12 +1,13 @@
-import os
 import time
 from flask import Flask
 import threading
 
-from config import *
-from downloading import *
-from moderation import *
-from posting import *
+# Решил добавить что от куда импортируется, чтобы было понятнее, сам запутался пока делал изменения
+from config import community_ids, access_token, blacklist_file, downloaded_post
+from downloading import get_latest_posts, download_media_from_posts
+from downloading import downloaded_post_ids, downloaded_post_ids
+from moderation import moderation, write_post_ids_to_file, read_downloaded_post_ids
+from posting import perform_action_after_downloading
 
 # Создаем сервер
 app = Flask(__name__)
@@ -31,7 +32,7 @@ if __name__ == "__main__":
             # Сохраняется только пост прошедший модерацию и не был скачен до этого
             for post in latest_posts:
                 if moderation(post, blacklist_file):
-                    downloaded_media = download_media_from_posts([post], "media", downloaded_post_ids)
+                    downloaded_media = download_media_from_posts([post], "media", downloaded_post_ids, community_id)
                     perform_action_after_downloading(downloaded_media)
                     break
 

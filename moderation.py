@@ -1,10 +1,6 @@
 import os
 import re
 
-from config import *
-from downloading import *
-from posting import *
-
 # Функция для чтения айди постов
 def read_downloaded_post_ids(filename):
     if filename is None:
@@ -15,7 +11,6 @@ def read_downloaded_post_ids(filename):
 
     with open(filename, "r", encoding='utf-8') as file:
         return set(map(int, file.read().splitlines()))
-
 
 # Функция для записи айди постов в документ
 def write_post_ids_to_file(post_ids, filename):

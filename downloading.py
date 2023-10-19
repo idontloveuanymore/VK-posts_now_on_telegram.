@@ -1,11 +1,9 @@
 import os
-import re
 import requests
 import urllib.request
 
-from config import *
-from moderation import *
-from posting import *
+from moderation import read_downloaded_post_ids
+from config import downloaded_post
 
 # Функция для получения последнего поста (так как закреп - поста 2)
 def get_latest_posts(community_id, access_token):
@@ -21,7 +19,7 @@ def get_latest_posts(community_id, access_token):
     return data["response"]["items"]
 
 # Сохраняем изображения из скаченных постов
-def download_media_from_posts(posts, output_folder, downloaded_post_ids):
+def download_media_from_posts(posts, output_folder, downloaded_post_ids, group_id):
     downloaded_media = []
     for post in posts:
         post_id = post["id"]
@@ -36,7 +34,7 @@ def download_media_from_posts(posts, output_folder, downloaded_post_ids):
                     photo_sizes = attachment["photo"]["sizes"]
                     largest_size = max(photo_sizes, key=lambda x: x["width"])
                     photo_url = largest_size["url"]
-                    filename = os.path.join(output_folder, f"{post_id}_{attachment['photo']['id']}.jpg")
+                    filename = os.path.join(output_folder, f"{group_id}_{post_id}_{attachment['photo']['id']}.jpg")
                     urllib.request.urlretrieve(photo_url, filename)
                     print(f"Downloaded: {filename}")
                     downloaded_media.append(filename)
