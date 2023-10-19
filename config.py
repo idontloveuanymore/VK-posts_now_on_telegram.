@@ -9,7 +9,7 @@ downloaded_post = './data/downloaded_posts.txt'
 
 # vk_data
 access_token = os.getenv('access_token')
-community_ids = os.getenv('community_ids').split(',') # 
+community_ids = os.getenv('community_ids').split(',') # Должно быть написано так: community_ids=123,321,456,654 etc
 
 # telegram_data
 BOT_TOKEN = os.getenv('BOT_TOKEN')
