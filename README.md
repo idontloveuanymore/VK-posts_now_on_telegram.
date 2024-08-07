@@ -2,6 +2,11 @@
 
 <center>I will not write a brief description, everything is clear from the title))</center>
 
+# Support for this code is discontinued because it is too bad! However, you can use a rewritten commercial application with normal code. More information here - @another_vendetta_news (Telegram)
+
+
+
+
 # How does this code work?
 
 1. Data parsing.
@@ -27,4 +32,5 @@ Find out the community ID in Telegram - https://t.me/getmyid_bot
 # media? (example)
 
 <img alt="example usage" src="https://github.com/qwexzcssad/VK-posts_now_on_telegram./blob/master/Untitled.png">
+
 <h1 align="center">Thank u depl</h1>	
